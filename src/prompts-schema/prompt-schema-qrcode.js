@@ -1,17 +1,16 @@
 import chalk from "chalk";
+import { formatQRCodeTypePrompt, warning } from "../ui/theme.js";
 
 const promptSchemaQRCode = [
   {
     name: "link",
-    description: chalk.yellow("Digite o link para gerar o QR CODE"),
+    description: chalk.hex("#f8fafc").bold("Cole o link para gerar o QR Code"),
   },
   {
     name: "type",
-    description: chalk.yellow(
-      "Escolha entre o tipo de QRcode (1- NORMAL ou (2- TERMINAL"
-    ),
-    pattern: /^[1-2]+$/,
-    message: chalk.red.italic("Escolha apenas entre 1 e 2"),
+    description: formatQRCodeTypePrompt(),
+    pattern: /^[12]$/,
+    message: warning("Escolha apenas 1 ou 2"),
     required: true,
   },
 ];
